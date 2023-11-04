@@ -116,16 +116,20 @@ getId('btn4').onclick = function () {
 
 //?  Start lesson 5
 getId('btn5').onclick = function () {
-    var num = Math.abs(getValue('num'));
+    var num = getValue('num');
+    var absNum = Math.abs(num);
 
-    if (isNaN(num) || num < 10 || num > 99) {
+    if (isNaN(absNum) || absNum < 10 || absNum > 99) {
         alert("Please provide valid number");
         getId('result5').innerHTML = '';
         return;
     }
 
     var sum = 0;
-    sum = (num % 10) + Math.floor(num / 10);
+    sum = (absNum % 10) + Math.floor(absNum / 10);
+    if (num < 0){
+        sum = -sum;
+    }
 
     getId('result5').innerHTML = `Tổng 2 ký số của số trên là ${sum}`;
 }
